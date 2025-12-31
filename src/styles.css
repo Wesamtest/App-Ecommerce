@@ -1,3 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+
 
 @import "tailwindcss";
+
+@plugin "flowbite/plugin";
+
+.btn-main{
+    @apply border bg-green-700 text-gray-50 px-12 py-2 rounded shadow text-xl mt-4 mb-2 ;
+}
+.btn{
+  @apply bg-green-700 px-6 py-2 rounded border text-white my-1 block w-[100%] mx-auto;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+}

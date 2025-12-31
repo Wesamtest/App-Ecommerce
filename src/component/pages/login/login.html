@@ -1,0 +1,109 @@
+
+<section class="back p-10">
+  <form [formGroup]="loginForm" (ngSubmit)="submitform()" class="bg-gray-200 lg:w-[50%] md:w-[50%] mx-auto border-gray-500 shadow-lg rounded p-4 relative top-10 mt-5 mb-10 z-50">
+   <div>
+        <h1 class="text-green-700 text-center font-sans text-3xl mb-3">Register</h1>
+        
+        <div class="relative mb-3">
+             @let emailcontrol= loginForm.get('email');
+            <input [class]="{'border-green-700':emailcontrol?.valid ,'border-red-700':emailcontrol?.invalid && emailcontrol?.touched}"type="email" formControlName="email" id="email" class="block rounded-t-lg text-gray-900 px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium  border-gray-300 border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " />
+            <label [class]="{'text-green-700':emailcontrol?.valid ,'text-red-700':emailcontrol?.invalid && emailcontrol?.touched}" for="email" class="absolute text-gray-500 font-semibold text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+           
+            @if(emailcontrol?.errors&& emailcontrol?.touched){
+                <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                    <span class="sr-only">Danger</span>
+                    <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(emailcontrol?.getError('required')){
+                        <li>Email is required</li>
+
+                        }
+                        @if(emailcontrol?.getError('email')){
+                            <li>Make sure to include '@' and a domain (like .com)</li>
+                        } 
+                        
+                    </ul>
+                    </div>
+                </div>
+
+            }
+        
+        </div>
+        <div class="mb-3">
+        
+        <!-- INPUT WRAPPER -->
+        <div class="relative">
+          @let passwordcontrol = loginForm.get('password');
+
+          <input
+            [class]="{'border-green-700':passwordcontrol?.valid ,'border-red-700':passwordcontrol?.invalid && passwordcontrol?.touched}"
+            [type]="flag ? 'password' : 'text'"
+            formControlName="password"
+             placeholder=" "
+            class="block rounded-t-lg text-gray-900 px-2.5 pb-2.5 pt-5 w-full text-sm text-heading bg-neutral-secondary-medium  border-gray-300 border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+          />
+
+          <label
+          [class]="{'text-green-700':passwordcontrol?.valid ,'text-red-700':passwordcontrol?.invalid && passwordcontrol?.touched}"
+             class="absolute text-gray-500 font-semibold text-sm text-body duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >
+            Password
+          </label>
+
+          <!-- 👁️ EYE ICON -->
+          <button
+            type="button"
+            (click)="togglePasswordflag()"
+            class="absolute top-1/2 end-4 -translate-y-1/2
+                  cursor-pointer text-gray-500 hover:text-gray-800"
+          >
+            @if (flag) {
+              <i class="fas fa-eye"></i>
+            } @else {
+              <i class="fas fa-eye-slash"></i>
+            }
+          </button>
+        </div>
+
+        
+        @if (passwordcontrol?.errors && passwordcontrol?.touched) {
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <ul class="mt-1.5 list-disc list-inside">
+                    @if(passwordcontrol?.getError('required')){
+                      <li>Password is required</li>
+
+                    }
+                     @if(passwordcontrol?.getError('pattern')){
+                        <li> Invalid password format</li>
+                     } 
+                    
+              </ul>
+          </div>
+        }
+
+        </div>
+        
+                
+        <button  class="btn text-2xl font-sans cursor-pointer  disabled:cursor-not-allowed disabled:bg-gray-400 "  type="submit">
+        <span>Login</span>
+        @if(isLoading) {
+            <span>
+            <i class="fa-solid fa-spinner animate-spin"></i>
+            </span>
+        }
+            
+        </button>
+        <div>
+            @if(mesgError && isSubmitted) {
+                <p class="text-red-900 bg-red-200 text-center p-3 mt-3 border-white rounded">{{mesgError}}</p>
+            }
+            @if (msgSuccess) {
+                <p class="bg-green-500 text-white px-2 py-4 border">{{ msgSuccess }}</p>
+            }
+   
+        </div>
+    
+   </div>
+   
+  </form>
+</section>

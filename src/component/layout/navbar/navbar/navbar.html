@@ -1,0 +1,134 @@
+
+<nav
+  class="bg-gray-200 border-gray-200 fixed z-50 top-0 right-0 left-0 shadow"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4"
+  >
+    <a routerLink="/home">
+      <img src="/images/freshcart-logo.svg" alt="" />
+    </a>
+    <button
+      data-collapse-toggle="navbar-default"
+      (click)="toggleMenu()"
+
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+    <div class="hidden w-full flex-grow md:flex md:w-auto" id="navbar-default" [class.hidden]="isMenuHidden">
+      @if(islogin()){
+      <ul
+        class="ml-1 flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-200"
+      >
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 pt-3 px-3 xl:text-gray-800 rounded-sm"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+
+        <li>
+          <a
+            routerLink="/product"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 pt-3 px-3 xl:text-gray-800 rounded-sm"
+            aria-current="page"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/categorise"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 pt-3 px-3 xl:text-gray-800 rounded-sm"
+            aria-current="page"
+            >Categories</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 pt-3 px-3 xl:text-gray-800 rounded-sm"
+            aria-current="page"
+            >Brands</a
+          >
+        </li>
+      </ul>
+      }
+
+      <ul
+        class="ms-auto flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex md:flex-row flex-wrap md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-200"
+      >
+        @if(!islogin()){
+        <li role="button">
+          <a
+            routerLink="/login"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 px-3 xl:text-gray-700 rounded-sm"
+            aria-current="page"
+            >Login</a
+          >
+        </li>
+        <li role="button">
+          <a
+            routerLink="/register"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 px-3 xl:text-gray-700 rounded-sm"
+            aria-current="page"
+            >Register</a
+          >
+        </li>
+        } @else {
+
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-1 pt-2 px-3 xl:text-2xl md:text-xl xl:text-gray-900 rounded-sm relative"
+            aria-current="page"
+            ><i class="fa-solid fa-cart-plus"></i>
+            <!-- <span
+              class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0 left-0"
+              >{{ countnumer }}</span
+            > -->
+          </a>
+        </li>
+
+        <!-- <li role="button">
+          <a
+            routerLink="/logout"
+            routerLinkActive="bg-green-700 text-white"
+            class="block py-2 pt-3 px-3 xl:text-xl md:text-xl xl:text-gray-800 rounded-sm"
+            aria-current="page"
+            (click)="authService.logout()"
+            >LogOut</a
+          >
+        </li> -->
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
