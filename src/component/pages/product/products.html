@@ -1,0 +1,19 @@
+<section class="popular_product py-16">
+
+    <div class="container">
+        <h2 class=" text-gray-800 text-5xl pb-10 text-center">Product List</h2>
+        <div class="card grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @for (product of products; track product.id) {
+
+                    <app-card  [product]="product"/>
+            }
+               
+            
+                 
+            
+
+        </div>
+    </div>
+
+</section>
+

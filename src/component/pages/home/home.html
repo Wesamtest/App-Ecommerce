@@ -1,1 +1,46 @@
-<p>home works!</p>
+
+
+
+<section class="py-5">
+    
+         <owl-carousel-o [options]="mainOptions">
+            
+            <ng-template carouselSlide>
+                <img src="/images/ms-1.avif" alt="">
+            </ng-template>  
+            <ng-template carouselSlide>
+                <img src="/images/ms-2.avif" alt="">
+            </ng-template>  
+            <ng-template carouselSlide>
+                <img src="/images/ms-3.avif" alt="">
+            </ng-template>
+             <ng-template carouselSlide>
+                <img src="/images/ms-4.avif" alt="">
+            </ng-template>  
+        </owl-carousel-o>
+    
+</section>
+
+
+
+<app-popular-catecory/>
+
+
+
+
+
+<section class="popular_product py-10">
+
+    <div class="container">
+        <h2 class=" text-gray-800 text-5xl pb-10 ">Popular Product</h2>
+        <div class="card grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @for (product of products.slice(0, 20); track product.id) {
+               
+                <app-card  [product]="product"/>
+                 
+            }
+
+        </div>
+    </div>
+
+</section>

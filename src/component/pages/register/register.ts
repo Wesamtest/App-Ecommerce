@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { validateTree } from '@angular/forms/signals';
-import { Auth } from '../../core/auth/service/auth/auth';
+import { Auth } from '../../core/service/auth/auth';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 

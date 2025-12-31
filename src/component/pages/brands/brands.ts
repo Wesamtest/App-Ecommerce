@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './brands.css',
 })
 export class Brands {
+name: any;
 
 }

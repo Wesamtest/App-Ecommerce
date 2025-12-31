@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { Auth } from '../../core/auth/service/auth/auth';
+import { Auth } from '../../core/service/auth/auth';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { Subscription } from 'rxjs';
 })
 export class Login implements OnInit {
    flag:boolean=true
+
+   private readonly cookieService=inject(CookieService)
+
    togglePasswordflag():void{
     this.flag=!this.flag
   }
@@ -56,6 +60,7 @@ export class Login implements OnInit {
 
           if(res.message=='success'){
             setTimeout(()=>{
+              this.cookieService.set('token',res.token)
               this.router.navigate(['/home'])
 
             },1000)

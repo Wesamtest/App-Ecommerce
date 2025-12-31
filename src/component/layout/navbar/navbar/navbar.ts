@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, input } from '@angular/core';
+import { Component, AfterViewInit, input, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Auth } from '../../../core/service/auth/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,12 @@ export class Navbar  {
 
   toggleMenu() {
     this.isMenuHidden = !this.isMenuHidden;
+  }
+
+  private readonly auth=inject(Auth)
+
+  logOut(){
+    this.auth.logOut()
   }
 
   // readonly authService=inject(AuthService)

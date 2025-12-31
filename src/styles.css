@@ -4,11 +4,15 @@
 
 @plugin "flowbite/plugin";
 
+@utility container{
+  margin-inline:auto;
+}
+
 .btn-main{
     @apply border bg-green-700 text-gray-50 px-12 py-2 rounded shadow text-xl mt-4 mb-2 ;
 }
 .btn{
-  @apply bg-green-700 px-6 py-2 rounded border text-white my-1 block w-[100%] mx-auto;
+  @apply bg-green-700 px-6 py-2 rounded border text-white my-1 block w-[95%] mx-auto hover:bg-green-900  text-2xl font-sans cursor-pointer ;
 }
 
 body {

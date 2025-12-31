@@ -3,7 +3,7 @@
   class="bg-gray-200 border-gray-200 fixed z-50 top-0 right-0 left-0 shadow"
 >
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4"
+    class="max-w-screen-full flex flex-wrap items-center justify-between mx-auto py-2 px-4"
   >
     <a routerLink="/home">
       <img src="/images/freshcart-logo.svg" alt="" />
@@ -102,12 +102,17 @@
           >
         </li>
         } @else {
-
-        <li>
+          
+          
+             <li><a href=""><i class="fa-brands fa-square-twitter text-gray-700 block py-2 px-[5px] rounded-lg text-lg pt-4"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-facebook text-gray-700 block py-2 px-[5px] rounded-lg text-lg pt-4"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-instagram text-gray-700 block py-2 px-[5px] rounded-lg text-lg pt-4"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-linkedin text-gray-700 block py-2 px-[5px] rounded-lg text-lg pt-4"></i></a></li>
+            <li>
           <a
             routerLink="/cart"
             routerLinkActive="bg-green-700 text-white"
-            class="block py-1 pt-2 px-3 xl:text-2xl md:text-xl xl:text-gray-900 rounded-sm relative"
+            class="block  pt-3 px-3 xl:text-2xl md:text-xl text-gray-700 rounded-sm relative"
             aria-current="page"
             ><i class="fa-solid fa-cart-plus"></i>
             <!-- <span
@@ -117,16 +122,19 @@
           </a>
         </li>
 
-        <!-- <li role="button">
+        <li role="button">
           <a
             routerLink="/logout"
             routerLinkActive="bg-green-700 text-white"
             class="block py-2 pt-3 px-3 xl:text-xl md:text-xl xl:text-gray-800 rounded-sm"
             aria-current="page"
-            (click)="authService.logout()"
+            (click)="logOut()"
             >LogOut</a
           >
-        </li> -->
+        </li>
+       
+          
+         
         }
       </ul>
     </div>

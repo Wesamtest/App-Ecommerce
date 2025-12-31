@@ -1,1 +1,39 @@
-<p>details works!</p>
+
+<section class="py-14">
+
+    <div class="container">
+        <h1 class="text-center text-4xl text-green-800">Details Products </h1>
+
+        <div class="grid sm:grid-cols-12 items-center gap-6">
+
+            <div class="col-span-3 ">
+                <img [src]="Details.imageCover" class="w-[300px] sm:w-full sm:mx-auto " [alt]="Details.title">
+                
+               
+                    <div class="flex justify-center mt-4 ">
+                         @for ( detail of Details.images; track $index) {
+                            <img [src]="detail" class=" w-[80px] h-[80px] " [alt]="Details.title"> 
+                         }
+                          
+                    </div>
+                     
+                
+             
+            </div>
+            <div class="col-span-9">
+                <h2 class="text-3xl text-gray-800 font-bold py-5">{{Details.title}}</h2>
+                <p class="text-xl text-gray-700 py-2">{{Details.description}}</p>
+                <span class="my-10 text-green-700 text-2xl">{{Details.category.name}}</span>
+
+                <div class="flex justify-between items-center">
+                    <span class="text-3xl font-medium  text-gray-900">{{Details.price}} EGP</span>
+                    <span class="text-3xl font-medium  text-gray-900"><i class="fas fa-star text-yellow-500"></i>{{Details.ratingsAverage}}</span>
+                </div>
+                <button class="btn">Add To Cart</button>
+
+            </div>
+            
+        </div>
+    </div>
+
+</section>
