@@ -31,12 +31,13 @@ export const routes: Routes = [
       { path: 'cart', loadComponent: () => import('../component/pages/cart/cart').then(m => m.Cart), title: 'Cart' },
       { path: 'brands', loadComponent: () => import('../component/pages/brands/brands').then(m => m.Brands), title: 'Brands' },
       { path: 'product', loadComponent:()=>import('../component/pages/product/products').then(c=>c.Products), title: 'product' },
-      { path: 'allorders', loadComponent: () => import('../component/pages/all-orders/all-orders').then(m => m.AllOrders), title: 'allorders' },
+      // { path: 'allorders', loadComponent: () => import('../component/pages/allorders/allorders').then(m => m.AllOrders), title: 'allorders' },
       { path: 'categorise', loadComponent: () => import('../component/pages/categories/categories').then(m => m.Categories), title: 'Categorise' },
       { path: 'details/:slug/:id', loadComponent: () => import('../component/pages/details/details').then(m => m.Details), title: 'Details' },
        { path: 'details/:id', loadComponent: () => import('../component/pages/details/details').then(m => m.Details), title: 'Details' },
       { path: 'checkout/:id', loadComponent: () => import('../component/pages/checkout/checkout').then(m => m.Checkout), title: 'Checkout' },
       { path: 'gallery', loadComponent: () => import('../component/pages/gallery/gallery').then(m => m.Gallery), title: 'Gallery' },
+      { path: 'allorders', loadComponent: () => import('../component/pages/allorders/allorders').then(m => m.Allorders), title: 'allorders' },
       { path: '**', loadComponent: () => import('../component/pages/not-found/not-found').then(m => m.NotFound) }
     ] 
 

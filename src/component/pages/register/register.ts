@@ -4,6 +4,8 @@ import { validateTree } from '@angular/forms/signals';
 import { Auth } from '../../core/service/auth/auth';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 
 @Component({
@@ -17,6 +19,8 @@ export class Register implements OnInit{
 
   private readonly auth=inject(Auth)
   private readonly router=inject(Router)
+  private readonly cdRef = inject(ChangeDetectorRef);
+
   msgError:string='';
   msgSuccess:string=''
   isLoading:boolean=false;
@@ -67,6 +71,7 @@ export class Register implements OnInit{
       return { mismatch: true }
     }
   }
+  
   submitform():void{
 
      this.subscription.unsubscribe()
@@ -83,6 +88,7 @@ export class Register implements OnInit{
                   this.router.navigate(['/login'])
                 },2000)
                  this.msgSuccess=res.message
+                this.cdRef.detectChanges();
               }
              
               this.isLoading=false;
@@ -95,6 +101,7 @@ export class Register implements OnInit{
               this.msgError=err.error.message
               console.log(this.msgError)
               console.log(this.isLoading)
+              this.cdRef.detectChanges();
             }
           })
       }else{

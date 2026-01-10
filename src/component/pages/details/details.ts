@@ -1,8 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from '../../core/models/product';
 import { Detais } from './service/detais';
+import { CartServices } from '../cart/cart-services';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -14,6 +16,7 @@ export class Details implements OnInit {
   
 private readonly activatedRoute=inject(ActivatedRoute)
 private readonly detais=inject(Detais)
+private readonly changeDetectorRef=inject(ChangeDetectorRef)
 
 
 
@@ -44,12 +47,34 @@ getproductDetailes():void{
     next:(res)=>{
       console.log(res)
       this.Details=res.data
+      this.changeDetectorRef.detectChanges()
     },
     error:(err)=>{
       console.log(err)
     }
   })
 }
+
+private readonly cartServices=inject(CartServices)
+  private readonly toastrService=inject(ToastrService)
+
+  addproductItemTOCart(id:string):void{
+
+    this.cartServices.getcartApi(id).subscribe({
+      next:(res)=>{
+        console.log(res)
+        if(res.status==='success'){
+          this.toastrService.success(res.message,'Fresh Cart')
+        }
+      },
+      error:(err)=>{
+        console.log(err)
+         if(err.status==='fail'){
+          this.toastrService.success(err.message,'Fresh Cart')
+        }
+      }
+    })
+  }
 
 
 

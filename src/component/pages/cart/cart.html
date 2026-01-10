@@ -1,0 +1,48 @@
+<section class="py-10 bg-gray-200">
+    <div class="container grid items-start sm:grid-cols-12 gap-6">
+        <div class="col-span-8 rounded-lg p-4 shadow ">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-2xl text-gray-800">Cart</h1>
+                <span class="text-amber-600">{{cartDetails.products?.length}} Item</span>
+            </div>
+            @for (item of cartDetails.products; track item.product._id) {
+            <div class="bg-white  p-2 rounded shadow my-2 grid sm:grid-cols-12">
+                <div class="col-span-1">
+                    <img [src]="item.product.imageCover" class="w-full" [alt]="item.product.title">
+                </div>
+                <div class="col-span-11 flex items-center justify-between px-4">
+                    <div>
+                        <h3>{{item.product.title}}</h3>
+                        <div class="flex items-center space-x-4 my-3">
+                            <div
+                                class="flex items-center border border-gray-400 bg-gray-50 rounded-lg space-x-4 py-1 px-3">
+                                <button (click)="updatacountItemdata(item.product._id,item.count-1)" class="cursor-pointer border border-green-600 text-green-600  py-0 px-1 rounded-sm"><i class="fas fa-minus"></i></button>
+                                <p>{{item.count}}</p>
+                                <button (click)="updatacountItemdata(item.product._id,item.count+1)" class="cursor-pointer  border border-green-600 text-green-600 py-0 px-1 rounded-sm"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <button  (click)="removeItem(item.product._id)"
+                                class="cursor-pointer   text-red-800  py-0 px-1 rounded-sm"><i
+                                    class="fas fa-trash-can "></i></button>
+                        </div>
+                    </div>
+                    <span>{{getItemTotal(item) |currency :'GBP'}} </span>
+                </div>
+            </div>
+            }
+        </div>
+
+
+
+        <div class="col-span-4 rounded-lg p-4 shadow bg-white">
+            <h2 class="text-2xl text-gray-800">Orders Summary</h2>
+
+            <div class="flex items-center justify-between my-4">
+                <h3>Price</h3>
+                <h4>{{cartDetails.totalCartPrice |currency:'GBP'}} </h4>
+            </div>
+            <button class="btn text-center" [routerLink]="['/checkout',cartDetails._id]">Proceed To CheckOut</button>
+        </div>
+
+
+    </div>
+</section>

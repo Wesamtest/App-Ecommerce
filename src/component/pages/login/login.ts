@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Auth } from '../../core/service/auth/auth';
@@ -17,6 +17,7 @@ export class Login implements OnInit {
    flag:boolean=true
 
    private readonly cookieService=inject(CookieService)
+   private readonly cdRef = inject(ChangeDetectorRef);
 
    togglePasswordflag():void{
     this.flag=!this.flag
@@ -59,13 +60,16 @@ export class Login implements OnInit {
         next:(res)=>{
 
           if(res.message=='success'){
-            setTimeout(()=>{
-              this.cookieService.set('token',res.token)
-              this.router.navigate(['/home'])
+            // setTimeout(()=>{
+            //   this.cookieService.set('token',res.token,24,'/')
+            //   this.router.navigate(['/home'])
 
-            },1000)
+            // },1000)
+             this.cookieService.set('token',res.token,1,'/')
+             this.router.navigate(['/home'])
 
             this.msgSuccess=res.message
+            this.cdRef.detectChanges();
            
           }
            this.isLoading=false
@@ -75,6 +79,7 @@ export class Login implements OnInit {
           this.isLoading=false
           this.mesgError=err.error.message|| "Incorrect email or password";
           console.log(this.mesgError)
+          this.cdRef.detectChanges();
         }
       })
       console.log(this.subscription)
