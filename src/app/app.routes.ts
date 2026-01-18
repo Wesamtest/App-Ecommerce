@@ -18,7 +18,8 @@ export const routes: Routes = [
     children: [
         {path:'login',loadComponent:()=>import('../component/pages/login/login').then(c=>c.Login)},
     //   { path: 'login', loadComponent: () => import('../component/pages/pages/login').then(m => m.Login), title: 'Login' },
-      { path: 'register', loadComponent: () => import('../component/pages/register/register').then(c=> c.Register), title: 'Registers' }
+      { path: 'register', loadComponent: () => import('../component/pages/register/register').then(c=> c.Register), title: 'Registers' },
+      {path:'forget-password', loadComponent:()=>import('../component/layout/forget-password/forget-password').then(c=>c.ForgetPassword), title:'Forget Password'}
     ] 
   },
 

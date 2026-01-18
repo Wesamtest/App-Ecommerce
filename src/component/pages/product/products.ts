@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { OnSalePipe } from '../../shared/pipes/on-sale-pipe';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../../shared/pipes/search-pipe';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,7 @@ export class Products implements OnInit {
 
   private readonly allProduct = inject(AllProduct)
   private readonly changeDetectorRef=inject(ChangeDetectorRef)
+  
 
   text:string=""
   products: Product[] = []
@@ -38,6 +40,8 @@ export class Products implements OnInit {
   
   getAllProductData(pageNumber: number = 1): void {
     console.log('Fetching product data for page:', pageNumber);
+  
+
     this.allProduct.getAllProducts(pageNumber).subscribe({
       next: (res) => {
         console.log('Product API Success:', res);
@@ -48,10 +52,12 @@ export class Products implements OnInit {
         this.pageSize = res.metadata.limit
         this.p = res.metadata.currentPage
         this.total = res.results
+      
 
       },
       error: (err) => {
         console.error('Product API Error:', err);
+        
       }
     })
 

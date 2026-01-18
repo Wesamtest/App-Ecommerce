@@ -4,6 +4,7 @@ import { Register } from '../../../pages/register/register';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,20 @@ export class Auth {
     this.cookieService.delete('token')
     this.router.navigate(['/login'])
   }
-  
+
+
+  submitVerifyEmail(data:object):Observable<any>{
+    return this.httpClient.post(environment.baseUrl+'auth/forgotPasswords',data)
+
+  }
+
+   submitVerifycode(data:object):Observable<any>{
+    return this.httpClient.post(environment.baseUrl+'auth/verifyResetCode',data)
+
+  }
+
+   submitResetPassword(data:object):Observable<any>{
+    return this.httpClient.put(environment.baseUrl+'auth/resetPassword',data)
+
+  }
 }

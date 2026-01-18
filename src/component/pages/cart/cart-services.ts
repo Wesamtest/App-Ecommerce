@@ -20,7 +20,7 @@ myHeaders:object={
     return this.httpClient.post(environment.baseUrl + 'cart',
       {
         productId: id
-      },this.myHeaders
+      },
       
 
     )
@@ -28,12 +28,12 @@ myHeaders:object={
   }
 
   getLoggedInUserApi(): Observable<any> {
-    return this.httpClient.get(environment.baseUrl + 'cart',this.myHeaders)
+    return this.httpClient.get(environment.baseUrl + 'cart',)
   }
 
   removeSpicifcCartItem(id: string): Observable<any> {
 
-    return this.httpClient.delete(environment.baseUrl + `cart/${id}`,this.myHeaders)
+    return this.httpClient.delete(environment.baseUrl + `cart/${id}`,)
   }
 
 
@@ -43,7 +43,7 @@ myHeaders:object={
       {
           count: count,
       },
-      this.myHeaders  
+        
     )
 
   }
@@ -51,11 +51,11 @@ myHeaders:object={
 
   Checkoutsession(id:string|null,data:object):Observable<any>{
 
-    return this.httpClient.post(environment.baseUrl+`orders/checkout-session/${id}?url=http://localhost:4200`,data,this.myHeaders)
+    return this.httpClient.post(environment.baseUrl+`orders/checkout-session/${id}?url=http://localhost:4200`,data,)
   }
 
   createCashOrder(id:string|null,data:object):Observable<any>{
 
-    return this.httpClient.post(environment.baseUrl+`orders/${id}`,data,this.myHeaders)
+    return this.httpClient.post(environment.baseUrl+`orders/${id}`,data,)
   }
 }
