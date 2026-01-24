@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -11,6 +11,10 @@ export class CartServices {
 
   private readonly httpClient = inject(HttpClient)
   private readonly cookieService = inject(CookieService)
+
+  countNumber:BehaviorSubject<number>=new BehaviorSubject(0)
+
+  
 myHeaders:object={
         headers: {
           token: this.cookieService.get('token')

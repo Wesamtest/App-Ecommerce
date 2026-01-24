@@ -21,7 +21,11 @@ export class Card {
 
     this.cartServices.getcartApi(id).subscribe({
       next:(res)=>{
+
         console.log(res)
+        //behavior subject
+        this.cartServices.countNumber.next(res.numOfCartItems)
+
         if(res.status==='success'){
           this.toastrService.success(res.message,'Fresh Cart')
         }

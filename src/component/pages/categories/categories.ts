@@ -12,6 +12,11 @@ export class Categories implements OnInit {
    private readonly categoriy=inject(Categoriy)
 
   CategoriesList:Categories[]=[]
+image: any;
+private _id: any;
+category: any;
+name: any;
+id: any;
 
 ngOnInit(): void {
   this.getAllCtegoryData()

@@ -112,10 +112,11 @@
              <li>
           <a
             routerLink="/cart"
-            routerLinkActive="bg-green-700 text-white"
+            routerLinkActive="text-green-700 "
             class="block pt-3 py-2 px-3 text-3xl md:text-xl text-gray-700 rounded-sm  md:p-1  hover:text-green-800 transition-colors duration-200 relative"
             aria-current="page"
             ><i class="fa-solid fa-cart-plus"></i>
+            <span class="absolute bg-green-700 text-white text-[10px] px-[3px] rounded-lg top-0 end-0 z-10 ">{{count}}</span>
             <!-- <span
               class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0 left-0"
               >{{ countnumer }}</span

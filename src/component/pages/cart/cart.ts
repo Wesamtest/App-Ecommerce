@@ -44,8 +44,9 @@ ngOnInit(): void {
       next:(res)=>{
         console.log(res.data)
         this.cartDetails=res.data
+        this.cartServices.countNumber.next(res.numOfCartItems)
          this.cdr.detectChanges();
-        this.toastrService.error('Item removed from Cart Successfuly','fresh Cart')
+        this.toastrService.success('Item removed from Cart Successfuly','fresh Cart')
       },
       error:(err)=>{
         console.log(err)

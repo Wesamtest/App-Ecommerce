@@ -63,6 +63,7 @@ private readonly cartServices=inject(CartServices)
     this.cartServices.getcartApi(id).subscribe({
       next:(res)=>{
         console.log(res)
+        this.cartServices.countNumber.next(res.numOfCartItems)
         if(res.status==='success'){
           this.toastrService.success(res.message,'Fresh Cart')
         }
