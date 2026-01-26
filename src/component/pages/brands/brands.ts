@@ -7,6 +7,28 @@ import { Component } from '@angular/core';
   styleUrl: './brands.css',
 })
 export class Brands {
-name: any;
+
+  // brands:Ibrand[]=[]
+
+  // private readonly brandsService=inject(BrandsService)
+
+  // getdatabrand(){
+  //   this.brandsService.getbrands().subscribe({
+  //     next:(res)=>{
+  //       console.log(res.data)
+  //       this.brands=res.data
+  //     },
+  //     error:(err)=>{
+  //       console.log(err)
+  //     }
+  //   })
+  // }
+
+  // ngOnInit(): void {
+  //     this.getdatabrand()
+  // }
+
+
+
 
 }

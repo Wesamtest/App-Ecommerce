@@ -1,0 +1,27 @@
+<section class="container">
+  <h2 class="capitalize font-bold text-green-700 text-center text-2xl mt-14">
+    all categories
+  </h2>
+  <div
+    class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 top-10 relative mb-12"
+  >
+    @for (catpart of CategoriesList ; track catpart.id) {
+
+    <div
+      class="card border border-gray-300 rounded-lg shadow-sm bg-gray-50 cursor-pointer"
+    >
+      <div class="">
+        <img
+          class="rounded-t-lg w-full h-[300px]"
+          [src]="catpart.image"
+          [alt]="catpart.name"
+        />
+      </div>
+      <div class="body font-medium text-green-700 text-center text-xl p-5">
+        <h3>{{ catpart.name }}</h3>
+      </div>
+    </div>
+
+    }
+  </div>
+</section>
