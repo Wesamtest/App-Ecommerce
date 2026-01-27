@@ -34,7 +34,8 @@ export const routes: Routes = [
       { path: 'product', loadComponent:()=>import('../component/pages/product/products').then(c=>c.Products), title: 'product' },
       // { path: 'allorders', loadComponent: () => import('../component/pages/allorders/allorders').then(m => m.AllOrders), title: 'allorders' },
       { path: 'categorise', loadComponent: () => import('../component/pages/categories/categories').then(m => m.Categories), title: 'Categorise' },
-      { path: 'details/:slug/:id', loadComponent: () => import('../component/pages/details/details').then(m => m.Details), title: 'Details' },
+      { path: 'details/:slug/:id',loadComponent: () => import('../component/pages/details/details').then(m => m.Details), title: 'Details' },
+
        { path: 'details/:id', loadComponent: () => import('../component/pages/details/details').then(m => m.Details), title: 'Details' },
       { path: 'checkout/:id', loadComponent: () => import('../component/pages/checkout/checkout').then(m => m.Checkout), title: 'Checkout' },
       { path: 'gallery', loadComponent: () => import('../component/pages/gallery/gallery').then(m => m.Gallery), title: 'Gallery' },
