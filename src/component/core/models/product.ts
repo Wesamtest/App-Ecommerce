@@ -1,9 +1,10 @@
-import { Brands } from "../../pages/brands/brands";
+// import { Brandss } from "../../pages/brands/brands";
+import { Brandss } from './brands';
 
 export interface Product {
   sold: number;
   images: string[];
-  subcategory: Brands[];
+  subcategory: Brandss[];
   ratingsQuantity: number;
   _id: string;
   title: string;
@@ -12,8 +13,8 @@ export interface Product {
   quantity: number;
   price: number;
   imageCover: string;
-  category: Brands;
-  brand: Brands;
+  category: Brandss;
+  brand: Brandss;
   ratingsAverage: number;
   createdAt: string;
   updatedAt: string;

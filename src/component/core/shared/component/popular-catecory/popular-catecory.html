@@ -2,9 +2,9 @@
     <div class="container ">
          <h2 class="text-gray-800 text-4xl pb-10 ">Shop Popular Categories</h2>
         <owl-carousel-o [options]="customOptions">
-            @for (categorie of categorylist; track categorie._id) {
+            @for (categorie of categorylist; track categorie.id) {
                 <!-- <div class=" border border-gray-500 "> -->
-                    <ng-template carouselSlide [id]="categorie._id">
+                    <ng-template carouselSlide [id]="categorie.id">
                        <div class="border border-gray-600 rounded p-2 shadow mx-1">
                              <img [src]="categorie.image" [alt]="categorie.name" class="w-full h-[250px]" />
                             <h3 class="text-gray-700">{{ categorie.name }}</h3>

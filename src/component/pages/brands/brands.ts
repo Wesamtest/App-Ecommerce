@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { brands } from '../../core/service/brands';
+import { Brandss } from '../../core/models/brands';
 
 @Component({
   selector: 'app-brands',
@@ -8,25 +10,23 @@ import { Component } from '@angular/core';
 })
 export class Brands {
 
-  // brands:Ibrand[]=[]
+  brandslist:Brandss[]=[]
 
-  // private readonly brandsService=inject(BrandsService)
+  private readonly brands=inject(brands)
+name: string|null|undefined;
 
-  // getdatabrand(){
-  //   this.brandsService.getbrands().subscribe({
-  //     next:(res)=>{
-  //       console.log(res.data)
-  //       this.brands=res.data
-  //     },
-  //     error:(err)=>{
-  //       console.log(err)
-  //     }
-  //   })
-  // }
+  getdatabrand(){
+    this.brands.getbrandsApi().subscribe({
+      next:(res)=>{
+        console.log(res.data)
+        this.brandslist=res.data
+      }
+    })
+  }
 
-  // ngOnInit(): void {
-  //     this.getdatabrand()
-  // }
+  ngOnInit(): void {
+      this.getdatabrand()
+  }
 
 
 
