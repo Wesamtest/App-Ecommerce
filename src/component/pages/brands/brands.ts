@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { brands } from '../../core/service/brands';
 import { Brandss } from '../../core/models/brands';
 
@@ -13,13 +13,16 @@ export class Brands {
   brandslist:Brandss[]=[]
 
   private readonly brands=inject(brands)
-name: string|null|undefined;
+  private readonly changeDetectorRef=inject(ChangeDetectorRef)
+
+// name: string|null|undefined;Ks
 
   getdatabrand(){
     this.brands.getbrandsApi().subscribe({
       next:(res)=>{
         console.log(res.data)
         this.brandslist=res.data
+        this.changeDetectorRef.detectChanges()
       }
     })
   }
